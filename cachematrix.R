@@ -22,7 +22,6 @@ makeCacheMatrix <- function(x = matrix()) {
          getinv = getinv)
 }
 
-
 ## cacheSolve() function computes the inverse of a matrix and when
 ## the function is called for the second time, the inverse is 
 ## retreived from the cache...
@@ -40,20 +39,16 @@ cacheSolve <- function(x, ...) {
     inv
 }
 
-<<<<<<< HEAD
 #### Testing cacheSolve()
 
 #Call the makeCacheMarix() function and assign it to 'm'
-=======
-#Call the makeVector() function and assign it to 'm'
->>>>>>> b827b3b3781a620592f09e526615b556b45ef804
 m <- makeCacheMatrix()
 
 #use m's set function to create a matrix
 m$set(rbind(c(1, -1/4), c(-1/4, 1)))
 
 #use m's get function to retrieve the matrix created 
-m$get()
+(c <- m$get())
 
 #pass the list m to the cacheSolve() function: the inverse
 #  matrix should be returned
@@ -64,11 +59,14 @@ cacheSolve(m)
 # a message "retrieving value from cache" 
 cacheSolve(m)
 
-<<<<<<< HEAD
+# Test that the resulting matrix is indeed the inverse.
+# matrix multiplication of a marix by its inverse should be 
+# equal to the identity matrix
+
+c_inverse <- cacheSolve(m)
+c %*% c_inverse # multiplication of the matrix by its inverse
+
 ### Reference:
 
 # The testing procedure imitated from Adam Gruer's post on 
 # the discussion forums
-=======
-
->>>>>>> b827b3b3781a620592f09e526615b556b45ef804
